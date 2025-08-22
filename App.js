@@ -5,10 +5,15 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.form}>
+
         <Text style={styles.titleText}>Login</Text>
         <TextInput style={styles.input} keyboardType='email-address' placeholder='email address'></TextInput>
         <TextInput style={styles.input} placeholder='password'></TextInput>
-        <Button title='Login'/>
+
+        <View style={styles.button}>
+          <Button color="#000000" title="Login"/>
+        </View>
+        
       </View>
     </View>
   );
@@ -45,5 +50,10 @@ const styles = StyleSheet.create({
     borderColor: "#808080",
     backgroundColor: "#fff",
     borderRadius: 15,
+  },
+  button: {
+    color: "#fff",
+    width: 200,
+    margin:10
   }
 });
