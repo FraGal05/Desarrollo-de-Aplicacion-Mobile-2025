@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Button, StyleSheet, Text, TextInput, View, StatusBar, FlatList } from 'react-native';
+import usePokemons from '../hooks/usePokemons';
+import { Link } from 'expo-router';
+import TabLayout from './(tabs)/_layout';
 
 export default function App() {
+  const { pokemons } = usePokemons(20);
   return (
     <View style={styles.container}>
-      <View style={styles.form}>
 
-        <Text style={styles.titleText}>Login</Text>
-        <TextInput style={styles.input} keyboardType='email-address' placeholder='email address'></TextInput>
-        <TextInput style={styles.input} placeholder='password'></TextInput>
+      <TabLayout></TabLayout>
+      <Text style={styles.titleText}>Hola Mundo !</Text>
 
-        <View style={styles.button}>
-          <Button color="#000000" title="Login"/>
-        </View>
-        
-      </View>
+
+      <FlatList
+      data={pokemons}
+      keyExtractor={(item) => item.name}
+      renderItem={({ item }) => 
+      <Text>{item.name}</Text>}
+      />
+
+      <Link href="/about">About</Link>
+       <StatusBar style="auto"/>
     </View>
   );
 }
