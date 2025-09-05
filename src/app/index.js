@@ -17,8 +17,9 @@ const { pokemons } = usePokemons(20);
       <Text>{item.name}</Text>}
       />
 
-      <Link href="/about">About</Link>
-       <StatusBar style="auto"/>
+      <Link href="/about" style={styles.titleText}>About</Link>
+      <Link href="/(tabs)/perfil" style={styles.titleText}>Perfil</Link>
+      <StatusBar style="auto"/>
     </View>
   );
 }
