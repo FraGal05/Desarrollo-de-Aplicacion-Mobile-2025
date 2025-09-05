@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import api from "../api/api";
 
-const usePokemons = (limit = 20) => {
+const usePokemons = (limit) => {
     const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
