@@ -10,7 +10,7 @@ const usePokemons = (limit) => {
         const fetchPokemons = async () => {
             try {
                 setLoading(true);
-                const response = await api.get(`/pokemon?=limit=${limit}`);
+                const response = await api.get(`/pokemon?limit=${limit}`);
                 setPokemons(response.data.results);
             } catch (error) {
                 console.log(error);
@@ -21,7 +21,7 @@ const usePokemons = (limit) => {
         };
 
         fetchPokemons();
-    }, {limit});
+    }, [limit]);
 
     return { pokemons, loading, error };
 };

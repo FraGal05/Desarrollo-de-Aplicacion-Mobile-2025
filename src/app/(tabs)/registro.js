@@ -1,19 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, TextInput, View, Alert } from 'react-native';
+import { useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
+
 
 export default function Registro() {
+  const { register, error } = useAuth();
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+
+
+  const handleRegister = () => {
+    console.log(`${name}, ${username}, ${password}`);
+      register({ username, password, name});
+  }
+
   return (
     <View style={styles.container}>
         <StatusBar></StatusBar>
       <View style={styles.form}>
 
         <Text style={styles.titleText}>Register</Text>
-        <TextInput style={styles.input} keyboardType='default' placeholder='username'></TextInput>
-        <TextInput style={styles.input} keyboardType="default" placeholder='name'></TextInput>
-        <TextInput style={styles.input} placeholder='password'></TextInput>
+        <TextInput style={styles.input} value={username} onChangeText={setUsername} keyboardType='default' placeholder='username'></TextInput>
+        <TextInput style={styles.input} value={name} onChangeText={setName} keyboardType="default" placeholder='name'></TextInput>
+        <TextInput style={styles.input} value={password} onChangeText={setPassword} placeholder='password'></TextInput>
 
         <View style={styles.button}>
-          <Button color="#000000" title="Register" onPress={() => Alert.alert('Registrado con exito! 👍')}/>
+          <Button color="#000000" title="Register" onPress={handleRegister}/>
         </View>
         
       </View>

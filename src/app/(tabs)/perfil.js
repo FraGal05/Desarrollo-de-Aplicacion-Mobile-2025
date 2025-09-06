@@ -2,8 +2,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function Tab() {
-  const username = "Jose Espindola";
-  const password = "contraseña";
+  const username = "Jose_Espindola_55";
+  const name = "Jose Espindola";
   return (
     <View style={styles.container}>
       <Text style={styles.tabText}>Perfil</Text>
@@ -15,7 +15,7 @@ export default function Tab() {
         </View>
 
         <Text style={styles.text}>Username: <Text style={styles.subText}>{username}</Text></Text>
-        <Text style={styles.text}>Password: <Text style={styles.subText}>{password}</Text></Text>
+        <Text style={styles.text}>Name: <Text style={styles.subText}>{name}</Text></Text>
       
       </View>
 
