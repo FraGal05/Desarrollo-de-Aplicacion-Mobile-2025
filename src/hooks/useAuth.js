@@ -11,9 +11,9 @@ export const useAuth = () => {
         try {
             const response = await api.post("/users/register", data);
             if (response.data.msg) router.replace("/login"); 
-        } catch (error) {
-            setError(error.response?.data?.error || error.message);
-            throw error
+        } catch (err) {
+            setError(err.response?.data?.error || err.message);
+            throw err
         }
     }
     

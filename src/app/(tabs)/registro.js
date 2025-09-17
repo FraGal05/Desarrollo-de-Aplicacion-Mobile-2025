@@ -24,7 +24,7 @@ export default function Registro() {
         <Text style={styles.titleText}>Register</Text>
         <TextInput style={styles.input} value={username} onChangeText={setUsername} keyboardType='default' placeholder='username'></TextInput>
         <TextInput style={styles.input} value={name} onChangeText={setName} keyboardType="default" placeholder='name'></TextInput>
-        <TextInput style={styles.input} value={password} onChangeText={setPassword} placeholder='password'></TextInput>
+        <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry placeholder='password'></TextInput>
 
         <View style={styles.button}>
           <Button color="#000000" title="Register" onPress={handleRegister}/>
