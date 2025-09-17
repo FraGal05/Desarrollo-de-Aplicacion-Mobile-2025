@@ -1,7 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, TextInput, View, Alert } from 'react-native';
+import { useAuth } from '../../hooks/useAuth';
+import { useState } from 'react';
 
 export default function LoginView() {
+  const { login, error } = useAuth();
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+
+  const handleLogin = () => {
+    console.log(`${username}, ${password}`);
+      login({ username, password });
+  }
+
+
+
   return (
     <View style={styles.container}>
         <StatusBar style="dark"></StatusBar>
@@ -11,7 +24,7 @@ export default function LoginView() {
         <TextInput style={styles.input} placeholder='password'></TextInput>
 
         <View style={styles.button}>
-          <Button color="#000000" title="Login" onPress={() => Alert.alert('Ha ingresado con exito! 👍')}/>
+          <Button color="#000000" title="Login" onPress={handleLogin}/>
         </View>
         
       </View>
