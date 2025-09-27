@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://www.tvmaze.com/api#show-search";
+const BASE_URL = "https://api.tvmaze.com";
 
 const api = axios.create({
     baseURL: BASE_URL,

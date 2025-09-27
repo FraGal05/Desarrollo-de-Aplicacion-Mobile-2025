@@ -1,27 +1,20 @@
-import { Alert, Button, StyleSheet, Text, TextInput, View, StatusBar, FlatList } from 'react-native';
-import usePokemons from '../../hooks/usePokemons';
+import { StyleSheet, Text, View, StatusBar, FlatList } from 'react-native';
+import MovieTitle from '../../components/movieTitle';
 
 export default function App() {
-const { pokemons } = usePokemons(20);
   return (
     <View style={styles.container}>
 
       <Text style={styles.titleText}>Hola Mundo !</Text>
 
-
-      <FlatList
-      data={pokemons}
-      keyExtractor={(item) => item.name}
-      renderItem={({ item }) => 
-      <Text>{item.name}</Text>}
-      />
+      <MovieTitle/>
 
       <StatusBar style="auto"/>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
