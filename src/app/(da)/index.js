@@ -1,13 +1,26 @@
 import { StyleSheet, Text, View, StatusBar, FlatList } from 'react-native';
 import MovieTitle from '../../components/movieTitle';
+import useMovie from '../../hooks/useMovie';
 
 export default function App() {
+  const { movies } = useMovie("Batman");
   return (
     <View style={styles.container}>
 
       <Text style={styles.titleText}>Hola Mundo !</Text>
 
-      <MovieTitle/>
+       <FlatList
+        data={movies}
+        keyExtractor={(item) => item.show.id}
+        renderItem={({ item }) => (
+          <MovieTitle
+            image={item.show.image?.medium}
+            name={item.show.name}
+            rating={item.show.rating?.average || "0"}
+            link={item.show.url}
+          />
+        )}
+        />
 
       <StatusBar style="auto"/>
     </View>

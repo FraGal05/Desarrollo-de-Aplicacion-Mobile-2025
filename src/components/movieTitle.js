@@ -1,26 +1,20 @@
 import { View, Text, FlatList, StyleSheet, Image } from "react-native";
-import useMovie from '../hooks/useMovie';
 import { Link } from "expo-router";
 
-export default function MovieTitle (){
-    const { movies } = useMovie("Batman");
+export default function MovieTitle ({image, name, rating, link}){
     return (
         <View style={styles.container}>
-            <FlatList
-            data={movies}
-            keyExtractor={(item) => item.show.id}
-            renderItem={({ item }) => (
-                <View style={styles.movie}>
+            <View style={styles.movie}>
                     <Image
-                    source={{uri:item.show.image?.medium}}
+                    source={{uri: image}}
                     style={styles.image}
                     />
-                    <Text style={styles.item}>{item.show.name}</Text>
-                    <Text style={styles.item}>{item.show.rating.average}</Text>
-                    <Link href={item.show.url} style={styles.url}>{item.show.url}</Link>
+                    <View style={styles.itemContainer}>
+                      <Text style={styles.item}>{name}</Text>
+                      <Text style={styles.item}>Califación: <Text style={styles.score}>{rating}/10</Text> </Text>
+                      <Link href={link} style={styles.url}>{link}</Link>
+                    </View>
                 </View>
-                )}
-            />
         </View>
     )
 }
@@ -34,20 +28,36 @@ export const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     backgroundColor:"#cececeff",
+    borderRadius: 10
   },
-    item: {
+  item: {
     fontSize: 16,
     padding: 5,
-    margin: 10
+    margin: 5
+  },
+  itemContainer:{
+    flex: 1,
+    backgroundColor:"#fff",
+    alignItems:"center",
+    width:300,
+    borderBottomLeftRadius:10,
+    borderBottomRightRadius:10,
   },
   image: {
+    flex: 1,
     alignContent:"center",
     height: 350,
-    width: 250
+    width: 300,
+    borderTopLeftRadius:10,
+    borderTopRightRadius:10,
   },
   url: {
     fontSize:10,
     color:"#42c",
+    textDecorationLine:"underline"
+  },
+  score: {
+    color:"#DAA520",
     textDecorationLine:"underline"
   }
 })
