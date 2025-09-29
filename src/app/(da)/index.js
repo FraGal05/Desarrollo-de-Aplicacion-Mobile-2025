@@ -1,16 +1,30 @@
-import { StyleSheet, Text, View, StatusBar, FlatList } from 'react-native';
+import { StyleSheet, TextInput, View, StatusBar, FlatList, Pressable, Text} from 'react-native';
 import MovieTitle from '../../components/movieTitle';
 import useMovie from '../../hooks/useMovie';
+import { useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function App() {
-  const { movies } = useMovie("Batman");
+  const [valor, setValor] = useState("")
+  const [search, setSearch] = useState("")
+  const { shows } = useMovie(search);
+
+  const handleSearch = () => {
+    setSearch(valor)
+  }
+
   return (
     <View style={styles.container}>
-
-      <Text style={styles.titleText}>Hola Mundo !</Text>
+      <View style={styles.searchContainer}>
+        <TextInput style={styles.input} value={valor} onChangeText={setValor} placeholder='Busque su programa...'/>
+        <Pressable style={styles.button} onPress={handleSearch} >
+            <Ionicons color={'#fff'} name="search-outline" size={20}/>
+            <Text style={styles.buttonText}>Buscar</Text>
+        </Pressable>
+      </View>
 
        <FlatList
-        data={movies}
+        data={shows}
         keyExtractor={(item) => item.show.id}
         renderItem={({ item }) => (
           <MovieTitle
@@ -19,7 +33,7 @@ export default function App() {
             rating={item.show.rating?.average || "0"}
             link={item.show.url}
           />
-        )}
+        )}    
         />
 
       <StatusBar style="auto"/>
@@ -49,19 +63,34 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
   },
+  searchContainer:{
+    margin:10,
+    flexDirection:"row",
+    alignItems:"center",
+    gap: 0
+  },
   input: {
-    margin: 15,
+    height: 50,
     padding: 10,
     borderWidth: 1,
-    height: 40,
-    width: 200,
-    borderColor: "#808080",
+    width: 250,
+    borderColor: "#000",
     backgroundColor: "#fff",
-    borderRadius: 15,
+    borderTopLeftRadius: 15,
+    borderBottomLeftRadius: 15,
   },
   button: {
-    color: "#fff",
-    width: 200,
-    margin:10
+    borderColor:"#000",
+    backgroundColor:"#ce2000",
+    borderTopRightRadius: 15,
+    borderBottomRightRadius: 15,
+    height: 50,
+    alignItems:"center",
+    padding: 10,
+    flexDirection:"row"
+  },
+  buttonText: {
+    fontSize: 20,
+    color:"#fff"
   }
 });

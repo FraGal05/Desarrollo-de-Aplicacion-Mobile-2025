@@ -2,14 +2,14 @@ import { useEffect, useState } from "react"
 import api from "../api/movieApi";
 
 const useMovie = (name) => {
-    const [movies, setMovies] = useState([]);
+    const [shows, setShows] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchMovie = async () => {
             try {
                 const response = await api.get(`/search/shows?q=${name}`);
-                setMovies(response.data);
+                setShows(response.data);
             } catch (error) {
                 console.log(error);
                 setError(error);
@@ -19,7 +19,7 @@ const useMovie = (name) => {
         fetchMovie();
     }, [name]);
 
-    return { movies, error };
+    return { shows, error };
 };
 
 export default useMovie;

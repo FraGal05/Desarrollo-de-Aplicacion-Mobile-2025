@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { Link } from "expo-router";
 
 export default function MovieTitle ({image, name, rating, link}){
@@ -11,7 +11,7 @@ export default function MovieTitle ({image, name, rating, link}){
                     />
                     <View style={styles.itemContainer}>
                       <Text style={styles.item}>{name}</Text>
-                      <Text style={styles.item}>Califación: <Text style={styles.score}>{rating}/10</Text> </Text>
+                      <Text style={styles.item}>Califación: <Text style={styles.score}>{rating}/10 {'\u2605'}</Text> </Text>
                       <Link href={link} style={styles.url}>{link}</Link>
                     </View>
                 </View>
