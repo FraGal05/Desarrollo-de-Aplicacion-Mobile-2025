@@ -80,10 +80,11 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   searchContainer: {
-    margin: 10,
+    padding: 12,
     flexDirection: "row",
     alignItems: "center",
     gap: 0,
+    backgroundColor: "#ccc",
   },
   input: {
     height: 50,
@@ -102,7 +103,7 @@ export const styles = StyleSheet.create({
     borderColor: "#000",
     borderTopRightRadius: 15,
     borderBottomRightRadius: 15,
-    height: 51,
+    height: 50,
     alignItems: "center",
     padding: 10,
     gap: 5,
