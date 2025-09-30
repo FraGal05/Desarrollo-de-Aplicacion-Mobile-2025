@@ -1,29 +1,47 @@
-import { StyleSheet, TextInput, View, StatusBar, FlatList, Pressable, Text} from 'react-native';
-import MovieTitle from '../../components/movieTitle';
-import useMovie from '../../hooks/useMovie';
-import { useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  StatusBar,
+  FlatList,
+  Pressable,
+  Text,
+} from "react-native";
+import MovieTitle from "../../components/movieTitle";
+import useMovie from "../../hooks/useMovie";
+import { useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
+import Header from "../../components/header";
 
 export default function App() {
-  const [valor, setValor] = useState("")
-  const [search, setSearch] = useState("")
+  const [valor, setValor] = useState("");
+  const [search, setSearch] = useState("Star Wars");
   const { shows } = useMovie(search);
 
   const handleSearch = () => {
-    setSearch(valor)
-  }
+    setSearch(valor);
+  };
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle={"light-content"} />
+
+      <Header />
+
       <View style={styles.searchContainer}>
-        <TextInput style={styles.input} value={valor} onChangeText={setValor} placeholder='Busque su programa...'/>
-        <Pressable style={styles.button} onPress={handleSearch} >
-            <Ionicons color={'#fff'} name="search-outline" size={20}/>
-            <Text style={styles.buttonText}>Buscar</Text>
+        <TextInput
+          style={styles.input}
+          value={valor}
+          onChangeText={setValor}
+          placeholder="Busque su programa..."
+        />
+        <Pressable style={styles.button} onPress={handleSearch}>
+          <Ionicons color={"#fff"} name="search-outline" size={20} />
+          <Text style={styles.buttonText}>Buscar</Text>
         </Pressable>
       </View>
 
-       <FlatList
+      <FlatList
         data={shows}
         keyExtractor={(item) => item.show.id}
         renderItem={({ item }) => (
@@ -33,10 +51,8 @@ export default function App() {
             rating={item.show.rating?.average || "0"}
             link={item.show.url}
           />
-        )}    
-        />
-
-      <StatusBar style="auto"/>
+        )}
+      />
     </View>
   );
 }
@@ -44,9 +60,9 @@ export default function App() {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
   titleText: {
     margin: 30,
@@ -57,17 +73,17 @@ export const styles = StyleSheet.create({
     height: 350,
     padding: 10,
     width: 250,
-    borderWidth:1,
+    borderWidth: 1,
     borderColor: "#808080",
     borderRadius: 15,
     backgroundColor: "#fff",
     alignItems: "center",
   },
-  searchContainer:{
-    margin:10,
-    flexDirection:"row",
-    alignItems:"center",
-    gap: 0
+  searchContainer: {
+    margin: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 0,
   },
   input: {
     height: 50,
@@ -80,17 +96,18 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius: 15,
   },
   button: {
-    borderColor:"#000",
-    backgroundColor:"#ce2000",
+    borderColor: "#000",
+    backgroundColor: "#ce2000",
     borderTopRightRadius: 15,
     borderBottomRightRadius: 15,
     height: 50,
-    alignItems:"center",
+    alignItems: "center",
     padding: 10,
-    flexDirection:"row"
+    gap: 5,
+    flexDirection: "row",
   },
   buttonText: {
     fontSize: 20,
-    color:"#fff"
-  }
+    color: "#fff",
+  },
 });
