@@ -88,8 +88,8 @@ export const styles = StyleSheet.create({
   input: {
     height: 50,
     padding: 10,
-    borderWidth: 1,
     width: 250,
+    borderWidth: 1,
     borderColor: "#000",
     backgroundColor: "#fff",
     borderTopLeftRadius: 15,
@@ -98,9 +98,11 @@ export const styles = StyleSheet.create({
   button: {
     borderColor: "#000",
     backgroundColor: "#ce2000",
+    borderWidth: 1,
+    borderColor: "#000",
     borderTopRightRadius: 15,
     borderBottomRightRadius: 15,
-    height: 50,
+    height: 51,
     alignItems: "center",
     padding: 10,
     gap: 5,
