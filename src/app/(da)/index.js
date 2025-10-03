@@ -49,7 +49,6 @@ export default function App() {
             image={item.show.image?.medium}
             name={item.show.name}
             rating={item.show.rating?.average || "0"}
-            link={item.show.url}
           />
         )}
       />

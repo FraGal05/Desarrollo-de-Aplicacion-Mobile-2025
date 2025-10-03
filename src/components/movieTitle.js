@@ -1,25 +1,26 @@
-import { View, Text, StyleSheet, Image } from "react-native";
-import { Link } from "expo-router";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
+import { Link, useRouter } from "expo-router";
 
-export default function MovieTitle({ image, name, rating, link }) {
+export default function MovieTitle({ image, name, rating }) {
   return (
-    <View style={styles.container}>
-      <View style={styles.movie}>
-        <Image source={{ uri: image }} style={styles.image} />
-        <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>{name}</Text>
-          <Text style={styles.item}>
-            Califación:{" "}
-            <Text style={styles.score}>
-              {rating}/10 {"\u2605"}
-            </Text>{" "}
-          </Text>
-          <Link href={link} style={styles.url}>
-            {link}
-          </Link>
+    <Link href="movieScreen" asChild>
+      <Pressable>
+        <View style={styles.container}>
+          <View style={styles.movie}>
+            <Image source={{ uri: image }} style={styles.image} />
+            <View style={styles.itemContainer}>
+              <Text style={styles.itemTitle}>{name}</Text>
+              <Text style={styles.item}>
+                Califación:{" "}
+                <Text style={styles.score}>
+                  {rating}/10 {"\u2605"}
+                </Text>
+              </Text>
+            </View>
+          </View>
         </View>
-      </View>
-    </View>
+      </Pressable>
+    </Link>
   );
 }
 
