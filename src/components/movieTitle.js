@@ -1,9 +1,15 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
-import { Link, useRouter } from "expo-router";
+import { Link } from "expo-router";
 
-export default function MovieTitle({ image, name, rating }) {
+export default function MovieTitle({ image, name, rating, summary, link }) {
   return (
-    <Link href="movieScreen" asChild>
+    <Link
+      href={{
+        pathname: "/movie",
+        params: { image, name, rating, summary, link },
+      }}
+      asChild
+    >
       <Pressable>
         <View style={styles.container}>
           <View style={styles.movie}>
@@ -63,11 +69,6 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     borderWidth: 1,
-  },
-  url: {
-    fontSize: 10,
-    color: "#42c",
-    textDecorationLine: "underline",
   },
   score: {
     color: "#DAA520",

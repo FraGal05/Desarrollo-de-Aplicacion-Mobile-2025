@@ -76,6 +76,8 @@ export default function App() {
               image={item.image?.medium}
               name={item.name}
               rating={item.rating?.average || "0"}
+              link={item.url}
+              summary={item.summary}
             />
           )}
         />
@@ -88,6 +90,8 @@ export default function App() {
               image={item.show.image?.medium}
               name={item.show.name}
               rating={item.show.rating?.average || "0"}
+              link={item.show.url}
+              summary={item.show.summary}
             />
           )}
         />
