@@ -24,7 +24,7 @@ export default function MovieInfo({ image, name, rating, summary, link }) {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#425",
+    backgroundColor: "#c20",
     alignItems: "center",
     justifyContent: "center",
   },
