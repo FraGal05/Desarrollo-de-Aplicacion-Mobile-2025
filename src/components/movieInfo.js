@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 export default function MovieInfo({ image, name, rating, summary, link }) {
@@ -15,7 +16,9 @@ export default function MovieInfo({ image, name, rating, summary, link }) {
           </Text>
         </Text>
         <Text style={styles.summaryText}>{summary}</Text>
-        <Text style={styles.url}>{link}</Text>
+        <Link href={link} style={styles.url}>
+          {link}
+        </Link>
       </View>
     </View>
   );
@@ -24,9 +27,10 @@ export default function MovieInfo({ image, name, rating, summary, link }) {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#c20",
+    backgroundColor: "#be2929",
     alignItems: "center",
     justifyContent: "center",
+    flexDirection: "column",
   },
   imageContainer: {
     margin: 10,
@@ -41,7 +45,6 @@ export const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
-    color: "#fff",
     alignContent: "center",
     alignItems: "center",
     justifyContent: "center",
@@ -53,9 +56,12 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   summaryText: {
-    color: "#fff",
+    color: "#000",
+    fontWeight: "black",
     fontWeight: "bold",
-    margin: 30,
+    fontSize: 12,
+    margin: 10,
+    padding: 10,
   },
   rating: {
     color: "#fff",
